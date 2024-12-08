@@ -1,6 +1,13 @@
-function App() {
+import Input from "./Components/Input";
+
+const App = () => {
   return(
-    <h1 className="text-3xl font-bold text-center text-red-700">Hello Ahmed</h1>
+    <div className='flex w-full h-screen'>
+      <div className='w-1/2'>
+      Ahmed
+      </div>
+      <Input />
+    </div>
   )
 }
 

@@ -1,18 +1,22 @@
-const Todo = ({todo, isChecked, valueIndex, onDelete}) => {
+const Todo = ({todo, isChecked, valueIndex, onDelete, onCheck}) => {
     const classes = {
-        div: 'h-28 flex flex-row justify-between items-center rounded-lg my-4 border-2 border-slate-500',
+        div: 'h-28 flex flex-row justify-between items-center rounded-lg my-4 border-2',
         check: 'flex w-12 h-8',
-        text: 'font-semibold font-mono text-lg text-slate-700',
-        button: 'h-full w-[46px] text-sm font-semibold font-mono text-slate-700 hover:text-red-700 mr-1'
+        text: 'font-semibold font-mono text-lg',
+        button: 'h-full w-[46px] text-sm font-semibold font-mono hover:text-red-700 mr-1'
     }
 
     const handleBtnDelete = () => {
         onDelete(valueIndex)
     }
 
+    {isChecked ? classes.div += ' border-green-500' : classes.div +=' border-slate-500'}
+    {isChecked ? classes.text += ' text-green-500' : classes.text +=' text-slate-700'}
+    {isChecked ? classes.button += ' text-green-500' : classes.button +=' text-slate-700'}
+
     return(
         <div className={classes.div}>
-            <input className={classes.check} type="checkbox" />
+            <input onChange={(e) => onCheck(e.target.checked)} className={classes.check} type="checkbox" />
             <p className={classes.text}>{todo}</p>
             <button className={classes.button} onClick={handleBtnDelete}>Delete</button>
         </div>

@@ -11,7 +11,7 @@ const Todo = ({todo, isChecked, valueIndex, onDelete, onCheck}) => {
     }
 
     {isChecked ? classes.div += ' border-green-500' : classes.div +=' border-slate-500'}
-    {isChecked ? classes.text += ' text-green-500' : classes.text +=' text-slate-700'}
+    {isChecked ? classes.text += ' text-green-500  line-through' : classes.text +=' text-slate-700'}
     {isChecked ? classes.button += ' text-green-500' : classes.button +=' text-slate-700'}
 
     return(

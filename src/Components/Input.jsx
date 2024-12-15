@@ -1,5 +1,9 @@
-const Input = ({onSave, onClear, onChange, value, invalid}) => {
+import { useContext } from "react"
+import { TodoArrayContext } from "../store/TodoArrayContextProvider"
+
+const Input = () => {
     
+    const {handleSave, handleClear, handleChange, inputValue, isInvalid} = useContext(TodoArrayContext)
 
 
     const classes = {
@@ -11,15 +15,15 @@ const Input = ({onSave, onClear, onChange, value, invalid}) => {
         textInvalid: 'font-semibold font-mono text-red-600 mb-1'
     }
 
-    {!invalid ? classes.input += ' border-slate-400 bg-slate-200': classes.input +=' border-red-600 bg-red-200' }
+    {!isInvalid ? classes.input += ' border-slate-400 bg-slate-200': classes.input +=' border-red-600 bg-red-200' }
 
     return(
         <div className={classes.firstDiv}>
-            {invalid && <p className={classes.textInvalid}>*Please Enter Valid Text*</p> }
-            <textarea onChange={(e) => onChange(e.target.value)} value={value} type="text" className={classes.input} placeholder="type Todo Here" />
+            {isInvalid && <p className={classes.textInvalid}>*Please Enter Valid Text*</p> }
+            <textarea onChange={(e) => handleChange(e.target.value)} value={inputValue} type="text" className={classes.input} placeholder="type Todo Here" />
             <div className={classes.secondDiv}>
-                <button className={classes.btnClear} onClick={onClear}>Clear</button>
-                <button className={classes.btnSave} onClick={onSave}>Save</button>
+                <button className={classes.btnClear} onClick={handleClear}>Clear</button>
+                <button className={classes.btnSave} onClick={handleSave}>Save</button>
             </div>
         </div>
     )

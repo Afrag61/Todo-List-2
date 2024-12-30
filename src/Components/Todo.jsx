@@ -25,7 +25,7 @@ const Todo = ({todo, isChecked, valueIndex}) => {
 
     return(
         <div className={classes.div}>
-            <input onChange={(e) => handleBtnCheck(e.target.checked)} className={classes.check} type="checkbox" />
+            <input checked={isChecked} onChange={(e) => handleBtnCheck(e.target.checked)} className={classes.check} type="checkbox" />
             <p className={classes.text}>{todo}</p>
             <button className={classes.button} onClick={handleBtnDelete}>Delete</button>
         </div>
